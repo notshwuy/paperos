@@ -2,7 +2,7 @@
 runner = "bootimage runner"
 
 [build]
-target = "x86_64-hello_os.json"
+target = "x86_64-paperos.json"
 
 [unstable]
 build-std-features = ["compiler-builtins-mem"]

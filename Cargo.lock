@@ -9,7 +9,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "aa1b8265c3a76185da6a3c43a86ce4fc669663b92e7d044fb62840a6147b491b"
 
 [[package]]
-name = "hello-os"
+name = "paper"
 version = "0.1.0"
 dependencies = [
  "bootloader",

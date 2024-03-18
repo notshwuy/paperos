@@ -1,8 +1,8 @@
-### Hello OS
+### PaperOS
 
 A simple operating system writen in Rust.
 
-![Hello OS](assets/hello_os.png)
+![PaperOS](assets/paper_os.png)
 
 #### Goal
 
