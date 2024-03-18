@@ -24,7 +24,7 @@ pub const DEFAULT_COLOR: u8 = (Color::Brown as u8) | (Color::BrightWhite as u8) 
 pub struct Display {
     pub width: u8,
     pub height: u8,
-            
+
     pub cursor_start: *mut u8,
     pub cursor_position: *mut u8,
 }
@@ -34,15 +34,14 @@ impl Display {
         Display {
             width: size.0,
             height: size.1,
-            
-           
+
             cursor_start: buffer,
-            cursor_position: buffer
+            cursor_position: buffer,
         }
     }
 }
 
-unsafe fn write(buffer: *mut u8, color: u8, character: u8) {        
+unsafe fn write(buffer: *mut u8, color: u8, character: u8) {
     *buffer = character;
     *buffer.offset(1) = color;
 }
@@ -51,7 +50,7 @@ impl Display {
     pub fn clear(&mut self) {
         todo!()
     }
-    
+
     pub fn append(&mut self, color: u8, text: &[u8]) -> Result<u8, ()> {
         let buffer = self.cursor_position.clone();
         let max_offset = unsafe { self.cursor_start.offset((self.width as isize * self.height as isize) * 2) };
@@ -60,13 +59,13 @@ impl Display {
             if buffer > max_offset {
                 return Err(());
             }
-              
-            unsafe {                
+
+            unsafe {
                 write(buffer.offset(character_idx as isize * 2), color, character_byte);
                 self.cursor_position = buffer.offset(character_idx as isize * 2);
             }
         }
 
-        return Ok(text.len() as u8);
+        Ok(text.len() as u8)
     }
 }
