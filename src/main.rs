@@ -1,6 +1,7 @@
 #![no_std]
 #![no_main]
 
+use crate::display::{Color, Display};
 use core::panic::PanicInfo;
 
 pub mod display;

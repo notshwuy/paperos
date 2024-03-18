@@ -48,7 +48,11 @@ unsafe fn write(buffer: *mut u8, color: u8, character: u8) {
 
 impl Display {
     pub fn clear(&mut self) {
-        todo!()
+        unsafe {
+            for offset in 0..(self.width as isize * self.height as isize) {
+                write(self.cursor_start.offset(offset * 2), DEFAULT_COLOR, b' ');
+            }
+        }
     }
 
     pub fn append(&mut self, color: u8, text: &[u8]) -> Result<u8, ()> {
